@@ -1,0 +1,62 @@
+{% extends './main.html' %}
+
+{% block body %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="" class="form-inline">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <input class=" col-lg-6" type="text">
+                                        <input class="form-control col" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <a href="{% url 'store' %}" class="btn btn-secondary"> <i class="fa fa-angle-left"></i> Continue Shopping</a>
+                            </div>
+                            <div class="">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Image</th>
+                                            <th>Item</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in items %}
+                                        <tr>
+                                            <td><img class="img-thumbnail" src="{{ item.product.imageURL }}" style="width: 50px; height: 50px;" alt=""></td>
+                                            <td>{{ item.product.name }}</td>
+                                            <td>{{ item.product.price|floatformat:2 }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>{{ item.get_total|floatformat:2 }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <th>Grand Total:</td>
+                                            <td>{{ order.get_cart_items }}</td>
+                                            <td>{{ order.get_cart_total|floatformat:2 }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock body %}
