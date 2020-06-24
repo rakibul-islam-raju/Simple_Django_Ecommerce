@@ -10,7 +10,7 @@
                             <img class="img-fluid" src="{{ product.imageURL }}" alt="">                            
                             <h5 class="mt-2"><a class="text-info" href="">{{ product.name }}</a></h5>
                             <hr>
-                            <a href="" class="btn btn-info">Add to Card</a>
+                            <button data-product="{{ product.id }}" data-action="add" class="btn btn-info update-cart">Add to Card</button>
                             <a href="" class="btn btn-outline-secondary">View</a>
                             <h5 class="text-info" style="float: right;">{{ product.price }} tk</h5>
                         </div>
